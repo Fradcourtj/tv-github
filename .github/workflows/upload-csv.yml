@@ -18,7 +18,8 @@ jobs:
       - name: Download CSV from Google Drive
         run: |
           file_id="1Ol9nI-PLZXqNLCrTGe0NI8FLA7YjyXJm"
-          curl -L -o symbols.csv "https://drive.google.com/uc?export=download&id=${file_id}"
+          curl -c /tmp/cookie -s -L "https://drive.google.com/uc?export=download&id=${file_id}" > /dev/null
+          curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=$(awk '/download/ {print $NF}' /tmp/cookie)&id=${file_id}" -o symbols.csv
 
       - name: Print CSV content
         run: cat symbols.csv
