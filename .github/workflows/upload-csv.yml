@@ -13,7 +13,7 @@ jobs:
 
       - name: Download CSV from Google Drive
         run: |
-          curl -L -o your-file.csv "YOUR_GOOGLE_DRIVE_FILE_URL" # Replace with your Google Drive file URL
+          curl -L -o your-file.csv "https://drive.google.com/file/d/1NJbAotT1DXjQqirBD5FrbQ-hoRfzsXxb/view?usp=sharing" # Replace with your Google Drive file URL
 
       - name: Commit and push changes
         run: |
