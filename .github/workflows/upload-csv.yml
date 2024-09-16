@@ -20,7 +20,7 @@ jobs:
           curl -L -o your-file.csv "https://drive.google.com/uc?export=download&id=1NJbAotT1DXjQqirBD5FrbQ-hoRfzsXxb"
 
       - name: Print CSV content
-        run: cat symbols.csv
+        run: cat your-file.csv
 
       - name: Commit and push changes
         env:
@@ -28,6 +28,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add symbols.csv
+          git add your-file.csv
           git commit -m "Update CSV file"
           git push
