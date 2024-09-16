@@ -10,13 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Update to v3
+        uses: actions/checkout@v3
 
       - name: Download CSV from Google Drive
         run: |
-          curl -L -o your-file.csv "https://drive.google.com/file/d/1NJbAotT1DXjQqirBD5FrbQ-hoRfzsXxb/view?usp=sharing" # Replace with your Google Drive file URL
+          curl -L -o your-file.csv "https://drive.google.com/uc?export=download&id=1NJbAotT1DXjQqirBD5FrbQ-hoRfzsXxb"
 
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
