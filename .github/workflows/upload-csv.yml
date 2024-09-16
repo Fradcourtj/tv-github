@@ -1,0 +1,24 @@
+name: Upload CSV
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download CSV from Google Drive
+        run: |
+          curl -L -o your-file.csv "YOUR_GOOGLE_DRIVE_FILE_URL" # Replace with your Google Drive file URL
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add your-file.csv
+          git commit -m "Update CSV file"
+          git push
