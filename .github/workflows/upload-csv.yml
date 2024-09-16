@@ -5,6 +5,9 @@ on:
     - cron: '*/15 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   upload:
     runs-on: ubuntu-latest
@@ -15,6 +18,9 @@ jobs:
       - name: Download CSV from Google Drive
         run: |
           curl -L -o your-file.csv "https://drive.google.com/uc?export=download&id=1NJbAotT1DXjQqirBD5FrbQ-hoRfzsXxb"
+
+      - name: Print CSV content
+        run: cat your-file.csv
 
       - name: Commit and push changes
         env:
