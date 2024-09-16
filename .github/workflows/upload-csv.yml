@@ -17,10 +17,10 @@ jobs:
 
       - name: Download CSV from Google Drive
         run: |
-          curl -L -o your-file.csv "https://drive.google.com/uc?export=download&id=1NJbAotT1DXjQqirBD5FrbQ-hoRfzsXxb"
+          curl -L -o your-file.csv "https://drive.google.com/file/d/1Ol9nI-PLZXqNLCrTGe0NI8FLA7YjyXJm/view?usp=sharing"
 
       - name: Print CSV content
-        run: cat your-file.csv
+        run: cat symbols.csv
 
       - name: Commit and push changes
         env:
@@ -28,6 +28,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add your-file.csv
+          git add symbols.csv
           git commit -m "Update CSV file"
           git push
